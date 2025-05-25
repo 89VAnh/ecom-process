@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run app.py with PYTHONPATH",
+      "request": "launch",
+      "type": "debugpy",
+      "program": "${workspaceFolder}/src/main.py",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
+      "console": "integratedTerminal"
+    }
+  ]
+}

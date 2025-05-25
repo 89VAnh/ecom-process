@@ -1,0 +1,50 @@
+[
+    {
+        "id": 3,
+        "name": "task3",
+        "job_name": "gold_to_db",
+        "extracts": [
+            {
+                "type": "FULL_LOAD",
+                "schema": "",
+                "source": {
+                    "object": "platforms",
+                    "schema": "public",
+                    "database": "ecom",
+                    "type": "DATABASE",
+                    "sub_type": "POSTGRESQL"
+                },
+                "connection": {
+                    "url": "jdbc:postgresql://postgres_db:5432",
+                    "username": "user",
+                    "password": "password",
+                    "driver": "org.postgresql.Driver"
+                },
+                "limit": 100000,
+                "batch": 2
+            }
+        ],
+        "udf_infos": [],
+        "transform": "",
+        "load": {
+            "type": "OVERWRITE",
+            "params": {},
+            "schema": "",
+            "target": {
+                "object": "dim_platforms",
+                "schema": "",
+                "database": "ecom_silver",
+                "zone": "vietanh21-ecom-silver-zone",
+                "type": "S3",
+                "sub_type": "ICEBERG"
+            },
+            "connection": {
+                "url": "jdbc:postgresql://postgres_db:5432",
+                "username": "user",
+                "password": "password",
+                "driver": "org.postgresql.Driver"
+            }
+        },
+        "status": true
+    }
+]

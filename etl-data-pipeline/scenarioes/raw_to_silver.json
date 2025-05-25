@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "task1",
+    "job_name": "raw_to_silver",
+    "extracts": [
+      {
+        "type": "INCREMENTAL",
+        "schema": "",
+        "source": {
+          "object": "",
+          "schema": "results",
+          "database": "",
+          "zone": "vietanh21-ecom-raw-zone",
+          "type": "S3",
+          "sub_type": "JSON",
+          "script": ""
+        },
+        "limit": 100000,
+        "batch": 2
+      }
+    ],
+    "udf_infos": [],
+    "transform": "",
+    "load": {
+      "type": "APPEND",
+      "params": {},
+      "schema": "",
+      "target": {
+        "object": "results",
+        "schema": "",
+        "database": "ecom_silver",
+        "zone": "s3a://vietanh21-ecom-silver-zone",
+        "type": "S3",
+        "sub_type": "ICEBERG"
+      }
+    },
+    "status": true
+  }
+]

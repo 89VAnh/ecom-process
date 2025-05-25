@@ -1,0 +1,41 @@
+[
+    {
+        "id": 5,
+        "name": "task5",
+        "job_name": "build_fact_histories",
+        "extracts": [
+            {
+                "type": "FULL_LOAD",
+                "params": {
+                    "HEADER": "true"
+                },
+                "schema": "",
+                "source": {
+                    "object": "results",
+                    "schema": "",
+                    "database": "ecom_silver",
+                    "zone": "vietanh21-ecom-silver-zone",
+                    "type": "S3",
+                    "sub_type": "ICEBERG"
+                },
+                "limit": 100000,
+                "batch": 2
+            }
+        ],
+        "transform": "build_fact_histories",
+        "load": {
+            "type": "OVERWRITE",
+            "params": {},
+            "schema": "",
+            "target": {
+                "object": "fact_histories",
+                "schema": "",
+                "database": "ecom_gold",
+                "zone": "s3a://vietanh21-ecom-gold-zone",
+                "type": "S3",
+                "sub_type": "ICEBERG"
+            }
+        },
+        "status": true
+    }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 3,
+    "name": "task3",
+    "job_name": "fact_histories_to_db",
+    "extracts": [
+      {
+        "type": "FULL_LOAD",
+        "schema": "",
+        "source": {
+          "object": "fact_histories",
+          "schema": "",
+          "database": "ecom_gold",
+          "zone": "vietanh21-ecom-gold-zone",
+          "type": "S3",
+          "sub_type": "ICEBERG"
+        },
+        "limit": 100000,
+        "batch": 2
+      }
+    ],
+    "udf_infos": [],
+    "transform": "",
+    "load": {
+      "type": "OVERWRITE",
+      "params": {},
+      "schema": "",
+      "target": {
+        "object": "histories",
+        "schema": "public",
+        "database": "ecom",
+        "type": "DATABASE",
+        "sub_type": "POSTGRESQL"
+      },
+      "connection": {
+        "url": "jdbc:postgresql://postgres_db:5432",
+        "username": "user",
+        "password": "password",
+        "driver": "org.postgresql.Driver"
+      }
+    },
+    "status": true
+  }
+]

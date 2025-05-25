@@ -1,0 +1,20 @@
+services:
+  glue:
+    build: ./
+    container_name: glue
+    volumes:
+      - ./etl-data-pipeline:/home/glue_user/etl-data-pipeline
+      - ~/.aws:/root/.aws:ro
+      - ./jars/postgresql-42.7.5.jar:/usr/lib/spark/jars/postgresql-42.7.5.jar
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - AWS_REGION=us-east-1
+      - DISABLE_SSL=true
+    ports:
+      - "8080:8080"
+      - "4040:4040"
+    working_dir: /home/glue_user/etl-data-pipeline
+    tty: true
+    restart: always
+  

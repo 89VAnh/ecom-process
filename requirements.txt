@@ -1,0 +1,4 @@
+boto3
+py4j==0.10.9.7
+fastapi
+uvicorn
