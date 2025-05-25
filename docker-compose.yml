@@ -16,5 +16,6 @@ services:
       - "4040:4040"
     working_dir: /home/glue_user/etl-data-pipeline
     tty: true
+    command: python ./src/app.py
     restart: always
   
