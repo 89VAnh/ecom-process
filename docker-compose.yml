@@ -14,6 +14,7 @@ services:
     ports:
       - "8080:8080"
       - "4040:4040"
+      - "8010:8010"
     working_dir: /home/glue_user/etl-data-pipeline
     tty: true
     command: spark-submit src/app.py
