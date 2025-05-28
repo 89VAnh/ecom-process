@@ -40,4 +40,6 @@ async def run_job_sequence():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8010)
+    config = uvicorn.Config("app:app", host="0.0.0.0", port=8010, log_level="info")
+    server = uvicorn.Server(config)
+    server.run()
