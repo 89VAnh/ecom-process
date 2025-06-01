@@ -1,14 +1,15 @@
+import os
 from pyspark.sql import DataFrame
-from pyspark.sql.functions import col, min, max, lag, when, round, row_number
+from pyspark.sql.functions import col, min, max, lag, when, round
 from pyspark.sql.window import Window
 
 from datalake.core.session.spark import SparkSession
 
 # PostgreSQL connection properties
 db_properties = {
-    "url": "jdbc:postgresql://postgres_db:5432/ecom",
-    "user": "user",
-    "password": "password",
+    "url": os.getenv("POSTGRES_URL", "jdbc:postgresql://localhost:5432/ecom"),
+    "user": os.getenv("POSTGRES_USER", "postgres"),
+    "password": os.getenv("POSTGRES_PASSWORD", "password"),
     "driver": "org.postgresql.Driver",
 }
 
