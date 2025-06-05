@@ -36,7 +36,7 @@
         "sub_type": "POSTGRESQL"
       },
       "connection": {
-        "url": "jdbc:postgresql://postgres_db:5432",
+        "url": "jdbc:postgresql://ecom_db:5432",
         "username": "user",
         "password": "password",
         "driver": "org.postgresql.Driver"

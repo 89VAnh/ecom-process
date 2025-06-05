@@ -11,6 +11,8 @@ services:
     environment:
       - AWS_REGION=us-east-1
       - DISABLE_SSL=true
+    env_file:
+      - etl-data-pipeline/src/.env
     ports:
       - "8080:8080"
       - "4040:4040"

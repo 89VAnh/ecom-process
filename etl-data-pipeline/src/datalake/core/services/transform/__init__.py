@@ -7,11 +7,13 @@ from datalake.core.session.spark import SparkSession
 
 # PostgreSQL connection properties
 db_properties = {
-    "url": os.getenv("POSTGRES_URL", "jdbc:postgresql://localhost:5432/ecom"),
+    "url": os.getenv("POSTGRES_URL", "jdbc:postgresql://ecom_db:5432/ecom"),
     "user": os.getenv("POSTGRES_USER", "postgres"),
     "password": os.getenv("POSTGRES_PASSWORD", "password"),
     "driver": "org.postgresql.Driver",
 }
+
+print(f"Using PostgreSQL URL: {db_properties['url']}")
 
 
 class Transform:
@@ -149,9 +151,13 @@ class Transform:
                 col("platform_id"),
                 col("title"),
                 col("price"),
+                col("purchase_count"),
             )
             .filter(col("price").isNotNull())
-            .dropDuplicates(["crawled_at", "platform_id", "title", "price"])
+            .fillna(0, subset=["purchase_count"])
+            .dropDuplicates(
+                ["crawled_at", "platform_id", "title", "price", "purchase_count"]
+            )
         )
         return fact_histories_df
 

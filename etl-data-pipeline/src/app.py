@@ -7,9 +7,9 @@ app = FastAPI(title="Data Lake Job Runner API")
 
 # List of jobs to run in sequence
 JOB_SEQUENCE = [
-    "raw_to_silver",
-    "build_fact_products",
-    "build_fact_histories",
+    # "raw_to_silver",
+    # "build_fact_products",
+    # "build_fact_histories",
     "fact_products_to_db",
     "fact_histories_to_db",
 ]
